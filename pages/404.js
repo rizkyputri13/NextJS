@@ -6,7 +6,7 @@ export default function Custom404() {
     const router = useRouter()
     useEffect(() => {
         setTimeout(() => {
-            <Link href='/'/>
+            router.push('/')
         }, 2000)
     })
     return (
