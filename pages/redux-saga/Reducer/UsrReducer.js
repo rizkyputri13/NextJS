@@ -10,6 +10,7 @@ const getFromLocalStorage = (key) => {
 
 const INIT_STATE = {
     UserProfile: getFromLocalStorage('profile')?JSON.parse(sessionStorage.getItem('profile')):null ,
+    UserSignUp:{},
     message: ''
 }
 
@@ -54,7 +55,7 @@ const AddSignupSuccess = (state, action) => {
 
     return {
         ...state,
-        UserProfile: action.payload,
+        UserSignUp: action.payload,
     }
 }
 
