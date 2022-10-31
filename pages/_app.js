@@ -1,4 +1,3 @@
-import React from 'react'
 import App from 'next/app'
 import withReduxSaga from 'next-redux-saga'
 import withRedux from 'next-redux-wrapper'

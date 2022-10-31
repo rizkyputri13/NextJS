@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 import React, { useEffect } from 'react'
 
 export default function Custom404() {

@@ -27,7 +27,7 @@ export default function Dashboard() {
         if (!UserProfile) {
             router.push('/signin')
         }
-    }, [UserProfile])
+    }, [UserProfile, router])
     return (
         <>
             <div className="min-h-full">
