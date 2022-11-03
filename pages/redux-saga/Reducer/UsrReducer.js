@@ -1,15 +1,15 @@
 import * as ActionType from '../Constants/UsrConstant'
 
+
 const getFromLocalStorage = (key) => {
     if (!key || typeof window === 'undefined') {
         return ""
     }
     return sessionStorage.getItem(key)
-}
+  }
 
 const INIT_STATE = {
     UserProfile: getFromLocalStorage('profile')?JSON.parse(sessionStorage.getItem('profile')):null ,
-    UserSignUp:{},
     message: ''
 }
 
@@ -54,7 +54,7 @@ const AddSignupSuccess = (state, action) => {
 
     return {
         ...state,
-        UserSignUp: action.payload,
+        UserProfile: action.payload,
     }
 }
 

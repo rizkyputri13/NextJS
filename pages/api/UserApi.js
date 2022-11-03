@@ -1,10 +1,10 @@
 import axios from 'axios';
-import config from '../config/config';
+import config, { domain } from '../config/config';
 
 
 const signup = async(data)=>{
     try {
-        const result = await axios.post(`${config.domain}/auth/signup`,data);
+        const result = await axios.post(`${domain}/auth/signup`,data);
         return result;    
     } catch (error) {
         return error;
@@ -13,7 +13,7 @@ const signup = async(data)=>{
 
 const signin = async(data)=>{
     try {
-        const result = await axios.post(`${config.domain}/auth/login`,data);
+        const result = await axios.post(`${domain}/auth/login`,data);
         return result;    
     } catch (error) {
         return error;
@@ -23,7 +23,7 @@ const signin = async(data)=>{
 const profile = async()=>{
     axios.defaults.headers.common = {'Authorization': `Bearer ${sessionStorage.getItem('access_token')}`}
     try {
-        const result = await axios.get(`${config.domain}/profile`);
+        const result = await axios.get(`${domain}/profile`);
         return result;    
     } catch (error) {
         return error;

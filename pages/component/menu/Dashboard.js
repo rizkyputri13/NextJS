@@ -5,11 +5,20 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { doPushSignoutRequest } from '../../redux-saga/Action/UsrAction'
+// const navigation = [
+//     { name: 'Dashboard', href: '/', current: true },
+//     { name: 'Region Redux', href: '/Region/RegionReduxApi', current: false },
+//     { name: 'Region Pagination', href:'/Region/RegionView',current: false},
+//     { name: 'Login', href: '/signin', current: false }
+// ]
+
 const navigation = [
     { name: 'Dashboard', href: '/', current: true },
-    { name: 'Region Redux', href: '/Region/RegionReduxApi', current: false },
+    { name: 'Country Redux', href: '/Country/CountryReduxApi', current: false },
+    { name: 'Country Pagination', href:'/Country/CountryView',current: false},
     { name: 'Login', href: '/signin', current: false }
 ]
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -27,7 +36,7 @@ export default function Dashboard() {
         if (!UserProfile) {
             router.push('/signin')
         }
-    }, [UserProfile, router])
+    }, [UserProfile])
     return (
         <>
             <div className="min-h-full">

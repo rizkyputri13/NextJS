@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
-import { EditRegionRequest, GetOneRegionRequest } from '../redux-saga/Action/RegionAction'
+import { EditCountryRequest, GetOneCountryRequest } from '../redux-saga/Action/CountryAction'
 
-export default function FormikEditRegionApi(props) {
+export default function FormikEditCountryApi(props) {
     const dispatch = useDispatch()
-    const { region } = useSelector(state => state.regionStated)
+    const { country } = useSelector(state => state.countryStated)
     const [previewImg, setPreviewImg] = useState()
     const [preViewFile, setPreviewFile] = useState()
     const [uploaded, setUploaded] = useState(false)
-    const [uaploadedFile, setUploadedFile] = useState(false)
+    const [uploadedFile, setUploadedFile] = useState(false)
     useEffect(() => {
-        dispatch(GetOneRegionRequest(props.id))
+        dispatch(GetOneCountryRequest(props.id))
     }, [])
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            regionId: region.regionId,
-            regionName: region.regionName,
-            file: region.regionFile,
-            foto: region.regionPhoto
+            countryId: country.countryId,
+            countryName: country.countryName,
+            file: country.countryFile,
+            foto: country.countryPhoto
         },
         onSubmit: async (values) => {
             let payload = new FormData();
-            payload.append('regionName', values.regionName)
+            payload.append('countryName', values.countryName)
             payload.append('file', values.file)
             payload.append('foto', values.foto)
-            payload.append('regionId', values.regionId)
+            payload.append('countryId', values.countryId)
 
-            dispatch(EditRegionRequest(payload))
+            dispatch(EditCountryRequest(payload))
             props.closeAdd();
             window.alert('Data Successfully Updated')
             props.onRefresh();
@@ -68,19 +68,19 @@ export default function FormikEditRegionApi(props) {
     }
     return (
         <div>
-            <label class="block text-sm font-medium text-gray-700">Region Name : </label>
+            <label class="block text-sm font-medium text-gray-700">Country Name : </label>
             <input
                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 type="text"
-                name="regionName"
-                id="regionName"
-                value={formik.values.regionName}
+                name="countryName"
+                id="countryName"
+                value={formik.values.countryName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                autoComplete="regionName"
+                autoComplete="countryName"
                 onInvalid={formik.validateField}
             />
-            {formik.touched.regionName && formik.errors.regionName ? <span className="mt-2 text-sm text-red-600">{formik.errors.regionName}</span> : null}
+            {formik.touched.countryName && formik.errors.countryName ? <span className="mt-2 text-sm text-red-600">{formik.errors.countryName}</span> : null}
             <div>
                 <label class="block text-sm font-medium text-gray-700">Foto : </label>
                 <div>
